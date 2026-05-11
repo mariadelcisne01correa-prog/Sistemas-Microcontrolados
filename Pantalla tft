@@ -1,0 +1,39 @@
+#include <SPI.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_ILI9341.h>
+
+// Pines ESP32
+#define TFT_CS   5
+#define TFT_DC   2
+#define TFT_RST  4
+
+Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
+
+void setup() {
+  tft.begin(); // usa SPI por defecto (más estable)
+  tft.setRotation(1);
+
+  // Fondo blanco
+  tft.fillScreen(ILI9341_WHITE);
+
+  // Texto
+  tft.setTextColor(ILI9341_BLACK);
+  tft.setTextSize(2);
+
+  tft.setCursor(80, 30);
+  tft.println("MSG");
+
+  tft.setCursor(20, 60);
+  tft.println("JOSUE MERCHAN");
+
+  tft.setCursor(20, 90);
+  tft.println("JONNATHAN CARABAJO");
+ 
+  // Círculos
+  tft.fillCircle(60, 180, 20, ILI9341_RED);
+  tft.fillCircle(120, 180, 20, ILI9341_GREEN);
+  tft.fillCircle(180, 180, 20, ILI9341_BLUE);
+}
+
+void loop() {
+}
